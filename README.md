@@ -3,7 +3,7 @@ Marco D’Amico — Advanced Data Science And Programming
 
 This project builds a simple Machine Learning pipeline that tries to predict
 whether each S&P 500 stock will go up the following month.
-Based on the predictions, the project backtests easy trading strategies.
+Predictions are used to build and backtest simple investment strategies.
 
 The pipeline automatically performs:
 
@@ -15,31 +15,40 @@ The pipeline automatically performs:
    - ML Long Top 10%
    - Equal-Weight (benchmark)
    - Momentum 6M Top 10% (benchmark)
-   - ML Long–Short Top 10% vs Bottom 10% (optional)
+   - ML Long–Short Top 10% vs Bottom 10%
 6. Generate plots (equity curve, drawdown, calibration)
-7. Export all results to CSV files
+7. Export all results to the `report/outputs/` folder
 
 # Project structure
-data/ # downloaded prices and feature dataset
-features/ # dataset construction
-models/ # ML models and walk-forward engine
-portfolio/ # trading strategies and sensitivity analysis
-metrics/ # ML and portfolio metrics
-report/ # plots and tables
-main.py # full pipeline script
-settings.py # global parameters
+Marco_D-Amico_Project/
+│
+├── data/ # ticker list + generated datasets (ignored in git)
+├── features/ # feature construction (momentum, vol, MA ratios, RSI)
+├── models/ # ML models + walk-forward expanding window
+├── metrics/ # evaluation metrics (AUC, Brier, Sharpe, MaxDD, etc.)
+├── notebooks/ # exploratory analysis and prototyping
+├── portfolio/ # portfolio strategies and sensitivity analysis
+├── report/ # plotting utilities + exported figures / tables
+│
+├── main.py # full pipeline runner
+├── settings.py # global configuration variables
+├── environment.yml # conda environment for reproducibility
+├── requirements.txt
+└── README.md
 
 # How to run
-From the project root:
-python main.py
+Clone the repository:
 
-The script will:
-- download prices (only first time)
-- build the ML dataset
-- train all models using walk-forward CV
-- pick the best model
-- run all backtests (full sample + subperiods)
-- save tables and figures under `report/outputs/`
+```bash
+git clone https://github.com/marcodamico03/Marco_D-Amico_Project
+cd Marco_D-Amico_Project
+
+Create and activate the conda environment
+conda env create -f environment.yml
+conda activate ml-finance
+
+### 3. Run the full pipeline
+python main.py
 
 # Outputs
 Generated inside `report/outputs/`:
