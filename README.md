@@ -1,0 +1,72 @@
+# ML Stock Selection Project
+Marco D’Amico — Advanced Data Science And Programming
+
+This project builds a simple Machine Learning pipeline that tries to predict
+whether each S&P 500 stock will go up the following month.
+Based on the predictions, the project backtests easy trading strategies.
+
+The pipeline automatically performs:
+
+1. Download daily S&P 500 price data (Yahoo Finance)
+2. Build monthly dataset and features (momentum, volatility, MA50 ratio, RSI)
+3. Train several ML models (Logistic Regression, Random Forest, XGBoost, etc.)
+4. Select the best model based on out-of-sample AUC
+5. Backtest the following strategies:
+   - ML Long Top 10%
+   - Equal-Weight (benchmark)
+   - Momentum 6M Top 10% (benchmark)
+   - ML Long–Short Top 10% vs Bottom 10% (optional)
+6. Generate plots (equity curve, drawdown, calibration)
+7. Export all results to CSV files
+
+# Project structure
+data/ # downloaded prices and feature dataset
+features/ # dataset construction
+models/ # ML models and walk-forward engine
+portfolio/ # trading strategies and sensitivity analysis
+metrics/ # ML and portfolio metrics
+report/ # plots and tables
+main.py # full pipeline script
+settings.py # global parameters
+
+# How to run
+From the project root:
+python main.py
+
+The script will:
+- download prices (only first time)
+- build the ML dataset
+- train all models using walk-forward CV
+- pick the best model
+- run all backtests (full sample + subperiods)
+- save tables and figures under `report/outputs/`
+
+# Outputs
+Generated inside `report/outputs/`:
+
+- `performance_summary.csv` — performance of all strategies
+- `backtest_full.csv` — equity curves
+- `calibration_points.csv` — probability calibration
+- `turnover.csv` — monthly turnover of ML top bucket
+- `sensitivity.csv` — sensitivity grid (top fraction × cost × period)
+- `model_metrics.csv` — results of all models
+- `plots`:
+  - equity curve
+  - underwater (drawdown)
+  - calibration curve
+  - feature importance (if available)
+
+# Interpretation
+- AUC is usually around 0.48–0.50 → ML has very limited predictive power
+  (this is normal in financial monthly forecasting).
+- ML Long Top 10% behaves similarly to an equal-weight portfolio.
+- Momentum 6M often performs best (well-known factor premium).
+- ML Long–Short tends to perform poorly → confirms no alpha.
+
+These outcomes are realistic and consistent with financial literature
+and the Efficient Market Hypothesis.
+
+# Author
+Marco D’Amico
+MSc Finance — HEC Lausanne
+Advanced Data Science And Programming Project
