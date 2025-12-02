@@ -20,6 +20,7 @@ The pipeline automatically performs:
 7. Export all results to the `report/outputs/` folder
 
 # Project structure
+```
 Marco_D-Amico_Project/
 │
 ├── data/ # ticker list + generated datasets (ignored in git)
@@ -35,6 +36,7 @@ Marco_D-Amico_Project/
 ├── environment.yml # conda environment for reproducibility
 ├── requirements.txt
 └── README.md
+```
 
 # How to run
 Clone the repository:
@@ -46,24 +48,24 @@ cd Marco_D-Amico_Project
 Create and activate the conda environment
 conda env create -f environment.yml
 conda activate ml-finance
+```
 
-### 3. Run the full pipeline
+# Run the full pipeline
 python main.py
 
-# Outputs
-Generated inside `report/outputs/`:
+This command will coordinate the different python files and run the whole project, generate the results and the given outputs inside `report/outputs/`:
 
 - `performance_summary.csv` — performance of all strategies
 - `backtest_full.csv` — equity curves
 - `calibration_points.csv` — probability calibration
 - `turnover.csv` — monthly turnover of ML top bucket
-- `sensitivity.csv` — sensitivity grid (top fraction × cost × period)
+- `sensitivity.csv` — sensitivity grid
 - `model_metrics.csv` — results of all models
 - `plots`:
   - equity curve
   - underwater (drawdown)
   - calibration curve
-  - feature importance (if available)
+  - feature importance
 
 # Interpretation
 - AUC is usually around 0.48–0.50 → ML has very limited predictive power
