@@ -4,4 +4,4 @@ data/ml_dataset.csv
 
 # Ignore generated outputs
 report/outputs/*
-!report/outputs/.gitkeep  # keep empty folder in repo for outputs
+!report/outputs/.gitkeep
