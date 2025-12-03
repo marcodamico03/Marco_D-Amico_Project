@@ -1,4 +1,4 @@
-name: dsap-project
+name: ml-finance
 channels:
   - conda-forge
   - defaults
