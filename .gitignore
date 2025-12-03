@@ -1,5 +1,5 @@
 # Ignore generated data files
-data/sp500_prices.csv
+# data/sp500_prices.csv
 data/ml_dataset.csv
 
 # Ignore generated outputs
