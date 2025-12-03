@@ -5,7 +5,13 @@ from pathlib import Path
 from data.tickers import sp500_tickers
 
 
-def download_prices(tickers=None, outfile="data/sp500_prices.csv", period="5y"):
+def download_prices(
+    tickers=None,
+    outfile="data/sp500_prices.csv",
+    start="2020-11-01",
+    end="2025-11-01",
+    period=None,
+):
     """
     Download daily Adjusted Close and Volume data from Yahoo Finance.
     """
@@ -25,7 +31,8 @@ def download_prices(tickers=None, outfile="data/sp500_prices.csv", period="5y"):
     # Download data from Yahoo Finance
     raw = yf.download(
         tickers,
-        period=period,
+        start=start,
+        end=end,
         interval="1d",
         auto_adjust=False,
         progress=False,
