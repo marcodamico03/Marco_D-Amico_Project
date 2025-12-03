@@ -76,7 +76,7 @@ def main():
     # load or download raw price data
     if not os.path.exists("data/sp500_prices.csv"):
         print("Downloading price data...")
-        download_prices(period="5y")
+        download_prices(start="2020-11-01", end="2025-11-01")
     else:
         print("Price data already available.")
 
