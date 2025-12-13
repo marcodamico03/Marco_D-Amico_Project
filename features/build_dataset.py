@@ -25,7 +25,7 @@ def build_ml_dataset(prices_csv="data/sp500_prices.csv", out_csv="data/ml_datase
     ret_d = px_d.pct_change()
 
     # Monthly prices (last trading day of each month) and monthly returns
-    px_m = px_d.resample("M").last()
+    px_m = px_d.resample("ME").last()
     ret_m = px_m.pct_change()
 
     # --- FEATURES ---
@@ -35,10 +35,10 @@ def build_ml_dataset(prices_csv="data/sp500_prices.csv", out_csv="data/ml_datase
     f6m = (px_m / px_m.shift(6) - 1)
 
     # 3M volatility: daily rolling std over 63 trading days, then take month-end
-    vol3 = ret_d.rolling(63).std().resample("M").last()
+    vol3 = ret_d.rolling(63).std().resample("ME").last()
 
     # 50D moving-average ratio at month-end
-    ma50 = (px_d / px_d.rolling(50).mean()).resample("M").last()
+    ma50 = (px_d / px_d.rolling(50).mean()).resample("ME").last()
 
     # RSI(14D) on daily data, then sampled at month-end
     delta = px_d.diff()
@@ -48,7 +48,7 @@ def build_ml_dataset(prices_csv="data/sp500_prices.csv", out_csv="data/ml_datase
     avg_loss = loss.rolling(14).mean()
     rs = avg_gain / (avg_loss + 1e-9)
     rsi_d = 100 - (100 / (1 + rs))
-    rsi_m = rsi_d.resample("M").last()
+    rsi_m = rsi_d.resample("ME").last()
 
     # Helper to go from wide to long
     def to_long(w, name):
