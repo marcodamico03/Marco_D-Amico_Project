@@ -9,13 +9,13 @@ MODELS = {
     # Logistic Regression with L2 regularization
     "Logit_L2": make_pipeline(
         StandardScaler(),
-        LogisticRegression(max_iter=1000, C=0.5, penalty="l2", random_state=SEED)
+        LogisticRegression(max_iter=1000, C=0.5, random_state=SEED)
         ),
 
     # Logistic Regression without regularization
     "Logit_noReg": make_pipeline(
         StandardScaler(),
-        LogisticRegression(max_iter=1000, penalty=None, random_state=SEED)
+        LogisticRegression(max_iter=1000, C=1e9, random_state=SEED)
         ),
 
     # Random Forest Classifier
