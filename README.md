@@ -1,5 +1,5 @@
 # ML Stock Selection Project
-Marco D’Amico — Advanced Data Science And Programming
+Marco D’Amico — Datascience And Advanced Programming
 
 This project builds a simple Machine Learning pipeline that tries to predict
 whether each S&P 500 stock will go up the following month.
@@ -80,4 +80,4 @@ and the Efficient Market Hypothesis.
 # Author
 Marco D’Amico
 MSc Finance — HEC Lausanne
-Advanced Data Science And Programming Project
+Datascience And Advanced Programming Project
