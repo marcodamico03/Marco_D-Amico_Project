@@ -1,4 +1,4 @@
-# ML Stock Selection Project
+# Machine Learning–Based Stock Selection and Trading Strategy
 Marco D’Amico — Datascience And Advanced Programming
 
 This project builds a simple Machine Learning pipeline that tries to predict
